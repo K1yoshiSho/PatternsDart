@@ -1,8 +1,8 @@
 void main() {
   final strategy = Strategy();
-  strategy.setAlgorithm(MagicAttacks.ice);
+  strategy.setAttack(MagicAttacks.ice);
   strategy.attack();
-  strategy.setAlgorithm(MagicAttacks.fire);
+  strategy.setAttack(MagicAttacks.fire);
   strategy.attack();
 }
 
@@ -27,18 +27,18 @@ class IceAttack implements Magic {
 
 class Strategy {
 
-  MagicAttacks? algorithm;
+  MagicAttacks? magicAttack;
 
   Map<MagicAttacks, Magic> map = {
     MagicAttacks.fire: FireAttack(),
     MagicAttacks.ice: IceAttack(),
   };
 
-  void setAlgorithm(MagicAttacks algorithm) {
-    this.algorithm = algorithm;
+  void setAttack(MagicAttacks magicAttack) {
+    this.magicAttack = magicAttack;
   }
 
   void attack() async {
-    map[algorithm]?.attack();
+    map[magicAttack]?.attack();
   }
 }
